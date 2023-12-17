@@ -9,7 +9,7 @@ Future<bool> load() async {
     if (translationsBox!.get("translations") == null) {
       translationsBox!.put("translations", <String, Map<String, dynamic>>{});
     } else if (translationsBox!.get("translations").isEmpty) {
-      translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
+      translationsBox!.put("translations", <String, Map<String, dynamic>>{DateTime.now().toString().split(' ')[0]: <String, dynamic>{}});
     }
 
     return true;
