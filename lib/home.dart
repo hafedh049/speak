@@ -2,6 +2,7 @@ import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
+import 'package:stepper_list_view/stepper_list_view.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -80,12 +81,7 @@ class _HomeState extends State<Home> {
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
-                  return EasyStepper(
-                    activeStep: 0,
-                    steps: <EasyStep>[
-                      EasyStep(),
-                    ],
-                  );
+                  return StepperListView(stepperData: stepperData, stepAvatar: stepAvatar, stepContentWidget: stepContentWidget)
                 },
               ),
             ),
