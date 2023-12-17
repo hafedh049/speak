@@ -42,11 +42,13 @@ class _HomeState extends State<Home> {
                     color: isToday(key) ? orange : secondaryColor,
                   ),
                   child: isToday(key)
-                      ? Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                      ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
                       : Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Text(),
+                            Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                            Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                            Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
                           ],
                         ),
                 );
