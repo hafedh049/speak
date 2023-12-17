@@ -12,4 +12,6 @@ Future<bool> load() async {
   }
 }
 
-bool isToday()
+bool isToday(String date) {
+  return;
+}
