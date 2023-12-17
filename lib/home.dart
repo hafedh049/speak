@@ -29,9 +29,12 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 30),
             const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
+            _translations.isEmpty ? const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+           :
             ListView.builder(
               itemCount: _translations.length,
               itemBuilder: (BuildContext context, int index) {
+
                 final String key = _translations.keys.elementAt(index);
                 final List<String> date = key.split("-");
                 return Container(
