@@ -25,6 +25,7 @@ class _CreateState extends State<Create> {
                 ),
                 const SizedBox(width: 10),
                 const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+                const Spacer(),
                 Container(
                   decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
                   child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
