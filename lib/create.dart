@@ -14,7 +14,9 @@ class _CreateState extends State<Create> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          children: <Widget>[],
+          children: <Widget>[
+            const SizedBox(height: 30),
+          ],
         ),
       ),
     );
