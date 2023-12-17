@@ -10,6 +10,10 @@ class Create extends StatefulWidget {
 class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: Column(
+        children: <Widget>[],
+      ),
+    );
   }
 }
