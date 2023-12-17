@@ -20,6 +20,9 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 30),
             Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
+            ListView.builder(
+              itemBuilder: (context, index) {},
+            )
           ],
         ),
       ),
