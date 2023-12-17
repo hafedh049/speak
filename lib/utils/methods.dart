@@ -13,5 +13,6 @@ Future<bool> load() async {
 }
 
 bool isToday(String date) {
+  String currentDate = DateTime.now().toString().split(" ")[0].split("-");
   return;
 }
