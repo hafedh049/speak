@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
             Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
             ListView.builder(
+              itemCount: DateTime.now().,
               itemBuilder: (BuildContext context, int index) {},
             )
           ],
