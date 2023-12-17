@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                       return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
                     },
                     stepContentWidget: (BuildContext context, dynamic value) {
-                      return
+                      return Container();
                     },
                   );
                 },
