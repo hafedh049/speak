@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: isToday() ? orange : secondaryColor,
+                    color: isToday(key) ? orange : secondaryColor,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
