@@ -39,7 +39,8 @@ class _HomeState extends State<Home> {
             _translations.isEmpty
                 ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
                 : Flexible(
-                    child: ListView.builder(physics: ,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
                       itemCount: _translations.length,
                       itemBuilder: (BuildContext context, int index) {
                         final String key = _translations.keys.elementAt(index);
