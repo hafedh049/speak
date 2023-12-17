@@ -14,7 +14,7 @@ final Map<String,List<Map<String,dynamic>>> _translations = <String,List<Map<Str
 
   @override
   void initState() {
-
+_translations.addAll(other)
     super.initState();
   }
 
