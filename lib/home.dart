@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                               const SizedBox(height: 5),
                               StatefulBuilder(
                                 key: _selectionKey,
-                                builder: (context, snapshot) {
+                                builder: (BuildContext context, void Function(void Function()) _) {
                                   return AnimatedContainer(duration: 500.ms, height: _activeDay == index ? 2 : 0, color: orange);
                                 },
                               ),
