@@ -41,12 +41,14 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(5),
                     color: isToday(key) ? orange : secondaryColor,
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(),
-                    ],
-                  ),
+                  child: isToday(key)
+                      ? Text("TODAY")
+                      : Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(),
+                          ],
+                        ),
                 );
               },
             )
