@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
               itemCount: _translations.length,
               itemBuilder: (BuildContext context, int index) {
                 final String key = _translations.keys.elementAt(index);
-                final List<String> date =
+                final List<String> date = key.split("-");
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   alignment: Alignment.center,
