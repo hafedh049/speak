@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             const SizedBox(height: 30),
             Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+            const SizedBox(height: 20),
           ],
         ),
       ),
