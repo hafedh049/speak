@@ -78,7 +78,9 @@ class _HomeState extends State<Home> {
                 controller: _pageController,
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
+                  final List<Map<String,dynamic>> items = _translations.values.elementAt(indexI);
                   return ListView.builder(
+                    itemCount: ,
                     itemBuilder: (BuildContext context, int indexJ) {},
                   );
                 },
