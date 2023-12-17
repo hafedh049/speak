@@ -30,7 +30,11 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 20),
             ListView.builder(
               itemCount: _translations.length,
-              itemBuilder: (BuildContext context, int index) {},
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  padding: const EdgeInsets.symmetric(),
+                );
+              },
             )
           ],
         ),
