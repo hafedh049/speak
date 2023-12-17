@@ -61,9 +61,9 @@ class _HomeState extends State<Home> {
                                 : Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                                      Text(date[1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
                                       Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+                                      Text(date[1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                                      Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                                     ],
                                   ),
                           ),
