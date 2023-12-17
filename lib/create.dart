@@ -35,7 +35,9 @@ class _CreateState extends State<Create> {
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                  child: Row(),
+                  child: Row(
+                    children: <Widget>[],
+                  ),
                 ),
               ],
             ),
