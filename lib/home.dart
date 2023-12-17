@@ -32,12 +32,14 @@ class _HomeState extends State<Home> {
             ListView.builder(
               itemCount: _translations.length,
               itemBuilder: (BuildContext context, int index) {
+                final String key = _translations.keys.elementAt(index);
+                final List<String> date =
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: isToday(_translations.keys.elementAt(index)) ? orange : secondaryColor,
+                    color: isToday() ? orange : secondaryColor,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
