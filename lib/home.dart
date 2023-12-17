@@ -14,6 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final Map<dynamic, dynamic> _translations = <dynamic, dynamic>{};
   final PageController _pageController = PageController();
+  int _activeDay = 0;
 
   @override
   void initState() {
