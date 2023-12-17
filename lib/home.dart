@@ -40,9 +40,10 @@ class _HomeState extends State<Home> {
                 ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
                 : SizedBox(
                     height: 70,
-                    child: ListView.builder(
+                    child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: _translations.length,
+                      separatorBuilder: (context, index) => const SizedBox(width: 10),
                       itemBuilder: (BuildContext context, int index) {
                         final String key = _translations.keys.elementAt(index);
                         final List<String> date = key.split("-");
