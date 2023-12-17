@@ -15,6 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final Map<dynamic, dynamic> _translations = <dynamic, dynamic>{};
   final PageController _pageController = PageController();
+  final GlobalKey<State> _selectionKey = GlobalKey<State>();
   int _activeDay = 0;
 
   @override
@@ -83,7 +84,12 @@ class _HomeState extends State<Home> {
                                       ),
                               ),
                               const SizedBox(height: 5),
-                              AnimatedContainer(duration: 500.ms, height: _activeDay == index ? 2 : 0, color: orange),
+                              StatefulBuilder(
+                                key: _selectionKey,
+                                builder: (context, snapshot) {
+                                  return AnimatedContainer(duration: 500.ms, height: _activeDay == index ? 2 : 0, color: orange);
+                                },
+                              ),
                             ],
                           ),
                         );
