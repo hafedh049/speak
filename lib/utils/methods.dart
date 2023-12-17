@@ -11,3 +11,5 @@ Future<bool> load() async {
     return false;
   }
 }
+
+bool isToday()
