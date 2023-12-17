@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                   ),
             const SizedBox(height: 10),
             SizedBox(
-              height: MediaQuery.sizeOf(context),
+              height: MediaQuery.sizeOf(context).height * .6,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _translations.length,
