@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
                     color: isToday(_translations.keys.elementAt(index)) ? orange : secondaryColor,
                   ),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[],
                   ),
                 );
