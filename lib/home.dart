@@ -1,3 +1,4 @@
+import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
@@ -79,10 +80,7 @@ class _HomeState extends State<Home> {
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
-                  return ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (BuildContext context, int indexJ) {},
-                  );
+                  return EasyStepper(activeStep: 0, steps: <EasyStep>[]);
                 },
               ),
             ),
