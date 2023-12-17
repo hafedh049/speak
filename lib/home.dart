@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: isToday(_translations.keys[index] )? orange:secondaryColor,),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: isToday(_translations.keys.elementAt(index) )? orange:secondaryColor,),
                   child: ,
                 );
               },
