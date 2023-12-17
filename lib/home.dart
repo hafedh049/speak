@@ -11,11 +11,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Map<String, List<Map<String, dynamic>>> _translations = <String, List<Map<String, dynamic>>>{};
+  final PageController _pageController = PageController();
 
   @override
   void initState() {
     _translations.addAll(translationsBox!.get("translations"));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -61,8 +68,11 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 10),
             SizedBox(
               child: PageView.builder(
+                controller: _pageController,
                 itemCount: _translations.length,
-                itemBuilder: (BuildContext context, int index) {},
+                itemBuilder: (BuildContext context, int index) {
+                  return;
+                },
               ),
             ),
           ],
