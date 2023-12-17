@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
             _translations.isEmpty
                 ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
                 : SizedBox(
-                    height: 60,
+                    height: 70,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: _translations.length,
