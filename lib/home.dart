@@ -58,7 +58,8 @@ class _HomeState extends State<Home> {
                         final List<String> date = key.split("-");
                         return GestureDetector(
                           onTap: () async {
-                            _activeDay = _pageController.jumpToPage(index);
+                            _activeDay = index;
+                            _pageController.jumpToPage(index);
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
