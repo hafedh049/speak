@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
-                  return StepperListView(stepperData: stepperData, stepAvatar: stepAvatar, stepContentWidget: stepContentWidget)
+                  return StepperListView(stepperData: <StepperItemData>[], stepAvatar: PreferredSize(preferredSize: Size.fromRadius(10),child: ,), stepContentWidget: stepContentWidget)
                 },
               ),
             ),
