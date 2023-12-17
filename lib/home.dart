@@ -9,12 +9,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-final Map<String,List<Map<String,dynamic>>> _translations = <String,List<Map<String,dynamic>>>{};
+  final Map<String, List<Map<String, dynamic>>> _translations = <String, List<Map<String, dynamic>>>{};
 
   @override
   void initState() {
-_translations.addAll(translationsBox!.get("translations"));
+    _translations.addAll(translationsBox!.get("translations"));
     super.initState();
   }
 
@@ -22,7 +21,7 @@ _translations.addAll(translationsBox!.get("translations"));
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:const  EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -30,7 +29,7 @@ _translations.addAll(translationsBox!.get("translations"));
             const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
             ListView.builder(
-              itemCount: ,
+              itemCount: _translations.length,
               itemBuilder: (BuildContext context, int index) {},
             )
           ],
