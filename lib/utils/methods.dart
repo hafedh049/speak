@@ -14,5 +14,6 @@ Future<bool> load() async {
 
 bool isToday(String date) {
   List<String> currentDate = DateTime.now().toString().split(" ")[0].split("-");
+  String date_ = date.split("-")
   return;
 }
