@@ -27,15 +27,18 @@ class _CreateState extends State<Create> {
                 const SizedBox(width: 10),
                 const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
                 const Spacer(),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                  child: const Row(
-                    children: <Widget>[
-                      Icon(Bootstrap.save, size: 20, color: white),
-                      Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
-                    ],
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
+                    child: const Row(
+                      children: <Widget>[
+                        Icon(Bootstrap.save, size: 20, color: white),
+                        Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
+                      ],
+                    ),
                   ),
                 ),
               ],
