@@ -19,7 +19,19 @@ class _CreateState extends State<Create> {
             const SizedBox(height: 30),
             Row(
               children: <Widget>[
+                Container(
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                  child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
+                ),
                 const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+                Container(
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                  child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
+                ),
+                Container(
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                  child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
+                ),
               ],
             ),
             const SizedBox(height: 20),
