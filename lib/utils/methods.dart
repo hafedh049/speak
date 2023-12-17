@@ -8,7 +8,10 @@ Future<bool> load() async {
     translationsBox = await Hive.openBox("translations");
     if (translationsBox!.get("translations") == null) {
       translationsBox!.put("translations", <String, Map<String, dynamic>>{});
-    } else if (translationsBox!.get("translations").isEmpty) {}
+    } else if (translationsBox!.get("translations").isEmpty) {
+      translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
+    }
+    translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
     return true;
   } catch (e) {
     return false;
