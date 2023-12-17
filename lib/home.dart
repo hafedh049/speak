@@ -31,7 +31,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Container(
-        child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 15), color: orange),
+        decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+        child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
