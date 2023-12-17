@@ -6,3 +6,4 @@ const Color gray = Color.fromARGB(255, 51, 56, 66);
 const Color transparent = Colors.transparent;
 const Color white = Color.fromARGB(255, 204, 204, 204);
 const Color orange = Color.fromARGB(255, 254, 131, 104);
+const Color blue = Color.fromARGB(255, 88, 129, 234);
