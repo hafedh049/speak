@@ -1,5 +1,7 @@
 Future<bool> load() async {
-  try {} catch (e) {
+  try {
+    return true;
+  } catch (e) {
     return false;
   }
 }
