@@ -87,7 +87,9 @@ class _HomeState extends State<Home> {
                     stepAvatar: (BuildContext context, dynamic value) {
                       return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
                     },
-                    stepContentWidget: stepContentWidget,
+                    stepContentWidget: (BuildContext context, dynamic value) {
+                      return
+                    },
                   );
                 },
               ),
