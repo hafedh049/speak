@@ -70,9 +70,9 @@ class _HomeState extends State<Home> {
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _translations.length,
-                itemBuilder: (BuildContext context, int index) {
+                itemBuilder: (BuildContext context, int indexI) {
                   return ListView.builder(
-                    itemBuilder: (context, index) {},
+                    itemBuilder: (BuildContext context, int indexJ) {},
                   );
                 },
               ),
