@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                                       ),
                               ),
                               const SizedBox(height: 5),
-                              AnimatedContainer(duration: 500.ms),
+                              AnimatedContainer(duration: 500.ms, height: 2, color: orange),
                             ],
                           ),
                         );
