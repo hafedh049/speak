@@ -33,6 +33,7 @@ class _CreateState extends State<Create> {
                 ),
                 const SizedBox(width: 10),
                 Container(
+                  alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
                   child: Row(
