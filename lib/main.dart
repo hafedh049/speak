@@ -17,10 +17,11 @@ class Main extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FutureBuilder<bool>(
-          future: load(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            return const Home();
-          }),
+        future: load(),
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          return const Home();
+        },
+      ),
       theme: ThemeData.dark(),
     );
   }
