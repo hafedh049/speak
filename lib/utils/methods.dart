@@ -15,5 +15,5 @@ Future<bool> load() async {
 bool isToday(String date) {
   final List<String> currentDate = DateTime.now().toString().split(" ")[0].split("-");
   final List<String> date_ = date.split("-");
-  return currentDate.every((String element) => date.contains(element));
+  return currentDate.every((String element) => date_.contains(element));
 }
