@@ -71,7 +71,9 @@ class _HomeState extends State<Home> {
                 controller: _pageController,
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return;
+                  return ListView.builder(
+                    itemBuilder: (context, index) {},
+                  );
                 },
               ),
             ),
