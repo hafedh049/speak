@@ -13,7 +13,8 @@ Future<bool> load() async {
     } else if (translationsBox!.get("translations").isEmpty) {
       translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
     }
-    translationsBox!.put("translations", <String, Map<String, dynamic>>{"${Random().nextInt(29) + 1}-12-2023": <String, dynamic>{}});
+    translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
+    //translationsBox!.put("translations", <String, Map<String, dynamic>>{"${Random().nextInt(29) + 1}-12-2023": <String, dynamic>{}});
     return true;
   } catch (e) {
     return false;
