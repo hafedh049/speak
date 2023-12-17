@@ -11,7 +11,6 @@ Future<bool> load() async {
     } else if (translationsBox!.get("translations").isEmpty) {
       translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
     }
-
     return true;
   } catch (e) {
     return false;
