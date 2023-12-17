@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
                   return StepperListView(
-                    stepperData: <StepperItemData>[],
+                    stepperData: items.map((Map<String, dynamic> e) => StepperItemData()).toList(),
                     stepAvatar: (BuildContext context, dynamic value) {
                       return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
                     },
