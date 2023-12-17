@@ -80,7 +80,12 @@ class _HomeState extends State<Home> {
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
-                  return EasyStepper(activeStep: 0, steps: <EasyStep>[]);
+                  return EasyStepper(
+                    activeStep: 0,
+                    steps: <EasyStep>[
+                      EasyStep(),
+                    ],
+                  );
                 },
               ),
             ),
