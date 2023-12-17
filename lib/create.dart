@@ -35,7 +35,7 @@ class _CreateState extends State<Create> {
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                  child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
+                  child: Row(),),
                 ),
               ],
             ),
