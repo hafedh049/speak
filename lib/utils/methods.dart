@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:speak/utils/globals.dart';
@@ -11,7 +13,7 @@ Future<bool> load() async {
     } else if (translationsBox!.get("translations").isEmpty) {
       translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
     }
-    translationsBox!.put("translations", <String, Map<String, dynamic>>{"17-12-2023": <String, dynamic>{}});
+    translationsBox!.put("translations", <String, Map<String, dynamic>>{"${Random().nextInt(29) + 1}-12-2023": <String, dynamic>{}});
     return true;
   } catch (e) {
     return false;
