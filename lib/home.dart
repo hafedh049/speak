@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                         final List<String> date = key.split("-");
                         return GestureDetector(
                           onTap: () async {
-                            _activeDay = index;
+                            _selectionKey.currentState!.setState(() => _activeDay = index);
                             _pageController.jumpToPage(index);
                           },
                           child: Column(
