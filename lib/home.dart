@@ -1,5 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
 import 'package:stepper_list_view/stepper_list_view.dart';
@@ -82,7 +83,7 @@ class _HomeState extends State<Home> {
                 itemBuilder: (BuildContext context, int indexI) {
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
                   return StepperListView(stepperData: <StepperItemData>[], stepAvatar: (BuildContext context ,dynamic value) {
-return PreferredSize(preferredSize: Size.fromRadius(10),child: ,);
+return const PreferredSize(preferredSize: Size.fromRadius(10),child: Icon(FontAwesome.radio_solid,color: orange,size: 15));
                   }, stepContentWidget: stepContentWidget,)
                 },
               ),
