@@ -33,7 +33,7 @@ class _CreateState extends State<Create> {
                 ),
                 const SizedBox(width: 10),
                 Container(
-                  decoration: const BoxDecoration(color: orange),
+                  decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
                   child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
                 ),
               ],
