@@ -17,8 +17,11 @@ class _CreateState extends State<Create> {
           children: <Widget>[
             const SizedBox(height: 30),
             Row(
-              children: <Widget>[],
+              children: <Widget>[
+                const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+              ],
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
