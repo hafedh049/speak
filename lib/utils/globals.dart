@@ -8,4 +8,4 @@ const Color white = Color.fromARGB(255, 204, 204, 204);
 const Color orange = Color.fromARGB(255, 254, 131, 104);
 const Color blue = Color.fromARGB(255, 88, 129, 234);
 
-final months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+final List<String> months = <String>['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
