@@ -7,7 +7,7 @@ Future<bool> load() async {
     Hive.init((await getApplicationDocumentsDirectory()).path);
     translationsBox = await Hive.openBox("translations");
     if (translationsBox!.get("translations") == null) {
-      translationsBox!.put("translations", <String,Map<>>{});
+      translationsBox!.put("translations", <String, Map<String, dynamic>>{});
     }
     return true;
   } catch (e) {
