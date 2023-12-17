@@ -9,6 +9,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+final Map<String,List<Map<String,dynamic>>> _translations
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
