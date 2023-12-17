@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
             const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
             _translations.isEmpty
-                ? const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2))
+                ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
                 : ListView.builder(
                     itemCount: _translations.length,
                     itemBuilder: (BuildContext context, int index) {
