@@ -61,23 +61,28 @@ class _HomeState extends State<Home> {
                             _activeDay = index;
                             _pageController.jumpToPage(index);
                           },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: isToday(key) ? orange : secondaryColor,
-                            ),
-                            child: isToday(key)
-                                ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
-                                : Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                                      Text(months[int.parse(date[1]) - 1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                                      Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                                    ],
-                                  ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: isToday(key) ? orange : secondaryColor,
+                                ),
+                                child: isToday(key)
+                                    ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                                    : Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+                                          Text(months[int.parse(date[1]) - 1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                                          Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                                        ],
+                                      ),
+                              ),
+                              const SizedBox(height: 5),
+                            ],
                           ),
                         );
                       },
