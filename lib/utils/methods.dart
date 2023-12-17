@@ -8,7 +8,7 @@ Future<bool> load() async {
     Hive.deleteBoxFromDisk("translations");
     translationsBox = await Hive.openBox("translations");
     if (translationsBox!.get("translations") == null) {
-      translationsBox!.put("translations", <String, Map<String, dynamic>>{});
+      translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{});
     } else if (translationsBox!.get("translations").isEmpty) {
       translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
     }
