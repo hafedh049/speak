@@ -19,7 +19,9 @@ class Main extends StatelessWidget {
       home: FutureBuilder<bool>(
         future: load(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          return const Home();
+          if(){return const Home();}
+          else if(){}
+          else {return }
         },
       ),
       theme: ThemeData.dark(),
