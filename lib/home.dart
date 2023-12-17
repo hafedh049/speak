@@ -18,7 +18,9 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    _translations.addAll(translationsBox!.get("translations"));
+    final Map<dynamic, dynamic> data = translationsBox!.get("translations");
+    _translations.addAll(data);
+    _activeDay = data.length;
     super.initState();
   }
 
