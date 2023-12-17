@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
                       itemBuilder: (BuildContext context, int index) {
                         final String key = _translations.keys.elementAt(index);
                         final List<String> date = key.split("-");
-                        return GestureDetector(onTap: ,
+                        return GestureDetector(
+                          onTap: () => _pageController.jumpToPage(index),
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             alignment: Alignment.center,
