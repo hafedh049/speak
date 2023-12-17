@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
               itemCount: _translations.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  padding: const EdgeInsets.symmetric(),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 );
               },
             )
