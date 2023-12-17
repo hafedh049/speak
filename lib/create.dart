@@ -31,9 +31,10 @@ class _CreateState extends State<Create> {
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                  child: Row(
+                  child: const Row(
                     children: <Widget>[
                       Icon(Bootstrap.save, size: 20, color: white),
+                      const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
                     ],
                   ),
                 ),
