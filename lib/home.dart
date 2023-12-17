@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
@@ -82,7 +83,7 @@ class _HomeState extends State<Home> {
                                       ),
                               ),
                               const SizedBox(height: 5),
-                              AnimatedContainer(duration: duration),
+                              AnimatedContainer(duration: 500.ms),
                             ],
                           ),
                         );
