@@ -59,6 +59,9 @@ class _HomeState extends State<Home> {
                     ),
                   ),
             const SizedBox(height: 10),
+            SizedBox(
+              child: PageView.builder(itemBuilder: itemBuilder),
+            ),
           ],
         ),
       ),
