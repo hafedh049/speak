@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
             SizedBox(
               child: PageView.builder(
                 itemCount: _translations.length,
-                itemBuilder: (context, index) {},
+                itemBuilder: (BuildContext context, int index) {},
               ),
             ),
           ],
