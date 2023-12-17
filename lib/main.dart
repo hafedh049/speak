@@ -19,7 +19,7 @@ class Main extends StatelessWidget {
       home: FutureBuilder<bool>(
         future: load(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          if(){return const Home();}
+          if(snapshot.hasData){return const Home();}
           else if(){}
           else {return }
         },
