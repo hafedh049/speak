@@ -33,6 +33,9 @@ class _HomeState extends State<Home> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: ),
+                  child: ,
                 );
               },
             )
