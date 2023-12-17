@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speak/utils/globals.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,6 +18,7 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(height: 30),
+            Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
           ],
         ),
       ),
