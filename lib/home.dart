@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: _translations.length,
-                      separatorBuilder: (context, index) => const SizedBox(width: 10),
+                      separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 10),
                       itemBuilder: (BuildContext context, int index) {
                         final String key = _translations.keys.elementAt(index);
                         final List<String> date = key.split("-");
