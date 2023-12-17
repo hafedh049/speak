@@ -5,6 +5,7 @@ import 'package:speak/utils/globals.dart';
 Future<bool> load() async {
   try {
     Hive.init((await getApplicationDocumentsDirectory()).path);
+    Hive.deleteBoxFromDisk("translations");
     translationsBox = await Hive.openBox("translations");
     if (translationsBox!.get("translations") == null) {
       translationsBox!.put("translations", <String, Map<String, dynamic>>{});
