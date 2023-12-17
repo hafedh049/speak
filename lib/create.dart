@@ -28,6 +28,7 @@ class _CreateState extends State<Create> {
                   decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
                   child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
                 ),
+                const SizedBox(width: 10),
                 Container(
                   decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
                   child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
