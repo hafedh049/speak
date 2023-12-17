@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[],
+                    children: <Widget>[Text()],
                   ),
                 );
               },
