@@ -81,8 +81,10 @@ class _HomeState extends State<Home> {
                 controller: _pageController,
                 itemCount: _translations.length,
                 itemBuilder: (BuildContext context, int indexI) {
-                  if(){return const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)));}
                   final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
+                  if (items.isEmpty) {
+                    return const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)));
+                  }
                   return StepperListView(
                     stepperData: items.map((Map<String, dynamic> e) => StepperItemData(content: e)).toList(),
                     stepAvatar: (BuildContext context, dynamic value) {
