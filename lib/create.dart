@@ -32,7 +32,9 @@ class _CreateState extends State<Create> {
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
                   child: Row(
-                    children: <Widget>[],
+                    children: <Widget>[
+                      Icon(Bootstrap.save, size: 20, color: white),
+                    ],
                   ),
                 ),
               ],
