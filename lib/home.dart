@@ -31,30 +31,32 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 20),
             _translations.isEmpty
                 ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
-                : ListView.builder(
-                    itemCount: _translations.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final String key = _translations.keys.elementAt(index);
-                      final List<String> date = key.split("-");
-                      return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: isToday(key) ? orange : secondaryColor,
-                        ),
-                        child: isToday(key)
-                            ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
-                            : Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                                  Text(date[1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                                  Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                                ],
-                              ),
-                      );
-                    },
+                : Flexible(
+                    child: ListView.builder(
+                      itemCount: _translations.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final String key = _translations.keys.elementAt(index);
+                        final List<String> date = key.split("-");
+                        return Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: isToday(key) ? orange : secondaryColor,
+                          ),
+                          child: isToday(key)
+                              ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                              : Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                                    Text(date[1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                                    Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+                                  ],
+                                ),
+                        );
+                      },
+                    ),
                   ),
           ],
         ),
