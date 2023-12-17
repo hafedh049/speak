@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final Map<String, List<Map<String, dynamic>>> _translations = <String, List<Map<String, dynamic>>>{};
+  final Map<String, Map<String, dynamic>> _translations = <String, Map<String, dynamic>>{};
   final PageController _pageController = PageController();
 
   @override
