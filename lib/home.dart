@@ -22,12 +22,12 @@ _translations.addAll(translationsBox!.get("translations"));
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding:const  EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(height: 30),
-            Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+            const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
             const SizedBox(height: 20),
             ListView.builder(
               itemCount: ,
