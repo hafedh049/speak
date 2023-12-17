@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:speak/utils/globals.dart';
+import 'package:speak/utils/methods.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
                 return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: ),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: isToday(_translations.keys[index])),
                   child: ,
                 );
               },
