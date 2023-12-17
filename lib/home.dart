@@ -37,7 +37,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       floatingActionButton: Container(
         decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-        child: IconButton(onPressed: () async {}, icon: const Icon(Bootstrap.plus, size: 20, color: white)),
+        child: IconButton(
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: builder)),
+          icon: const Icon(
+            Bootstrap.plus,
+            size: 20,
+            color: white,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
