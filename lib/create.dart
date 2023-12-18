@@ -305,7 +305,7 @@ class _CreateState extends State<Create> {
                 ],
               ),
               const SizedBox(height: 20),
-              Flexible(
+              Expanded(
                 child: Container(
                   decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
                   child: TextField(
