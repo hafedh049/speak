@@ -122,7 +122,7 @@ class _CreateState extends State<Create> {
                               itemCount: languageMap.length,
                               itemBuilder: (BuildContext context, int index) => GestureDetector(
                                 child: Container(
-                                  decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null),
+                                  decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
                                   child: Text(),
                                 ),
                               ),
