@@ -290,6 +290,7 @@ class _CreateState extends State<Create> {
                   GestureDetector(
                     onTap: () async {
                       await translationsBox!.put(key, value);
+                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     },
                     child: Container(
