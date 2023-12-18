@@ -145,9 +145,12 @@ class _CreateState extends State<Create> {
                             return FutureBuilder<Translation>(
                               future: _translator.translate(_inputController.text),
                               builder: (BuildContext context, AsyncSnapshot<Translation> snapshot) {
+                                if (snapshot.hasError) {
+                                  showToast(snapshot.error.toString());
+                                }
                                 return AnimatedTextKit(
                                   animatedTexts: <AnimatedText>[
-                                    TypewriterAnimatedText(_inputController.text),
+                                    TypewriterAnimatedText(snapshot.hasData ? snapshot.data!.text : ""),
                                   ],
                                 );
                               },
