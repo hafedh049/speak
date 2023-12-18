@@ -142,15 +142,16 @@ class _CreateState extends State<Create> {
                         child: StatefulBuilder(
                           key: _outputKey,
                           builder: (BuildContext context, void Function(void Function()) _) {
-                            return FutureBuilder(
-                                future: _translator.translate(_inputController.text),
-                                builder: (BuildContext context, AsyncSnapshot<Translation> snapshot) {
-                                  return AnimatedTextKit(
-                                    animatedTexts: <AnimatedText>[
-                                      TypewriterAnimatedText(_inputController.text),
-                                    ],
-                                  );
-                                });
+                            return FutureBuilder<Translation>(
+                              future: _translator.translate(_inputController.text),
+                              builder: (BuildContext context, AsyncSnapshot<Translation> snapshot) {
+                                return AnimatedTextKit(
+                                  animatedTexts: <AnimatedText>[
+                                    TypewriterAnimatedText(_inputController.text),
+                                  ],
+                                );
+                              },
+                            );
                           },
                         ),
                       ),
