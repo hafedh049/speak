@@ -35,96 +35,100 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: Container(
-        decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-        child: IconButton(
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Create())),
-          icon: const Icon(Bootstrap.plus, size: 20, color: white),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        floatingActionButton: Container(
+          decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+          child: IconButton(
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Create())),
+            icon: const Icon(Bootstrap.plus, size: 20, color: white),
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 30),
-            const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
-            const SizedBox(height: 20),
-            _translations.isEmpty
-                ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
-                : SizedBox(
-                    height: 70,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _translations.length,
-                      separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 10),
-                      itemBuilder: (BuildContext context, int index) {
-                        final String key = _translations.keys.elementAt(index);
-                        final List<String> date = key.split("-");
-                        return GestureDetector(
-                          onTap: () async {
-                            _selectionKey.currentState!.setState(() => _activeDay = index);
-                            _pageController.jumpToPage(index);
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: isToday(key) ? orange : secondaryColor,
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 30),
+              const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+              const SizedBox(height: 20),
+              _translations.isEmpty
+                  ? const Center(child: Text("NO ENTRY", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)))
+                  : SizedBox(
+                      height: 80,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: _translations.length,
+                        separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 10),
+                        itemBuilder: (BuildContext context, int index) {
+                          final String key = _translations.keys.elementAt(index);
+                          final List<String> date = key.split("-");
+                          return GestureDetector(
+                            onTap: () async {
+                              _selectionKey.currentState!.setState(() => _activeDay = index);
+                              _pageController.jumpToPage(index);
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: isToday(key) ? orange : secondaryColor,
+                                  ),
+                                  child: isToday(key)
+                                      ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                                      : Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+                                            Text(months[int.parse(date[1]) - 1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+                                            Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                                          ],
+                                        ),
                                 ),
-                                child: isToday(key)
-                                    ? const Text("TODAY", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
-                                    : Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: <Widget>[
-                                          Text(date[2], style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                                          Text(months[int.parse(date[1]) - 1], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                                          Text(date[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                                        ],
-                                      ),
-                              ),
-                              const SizedBox(height: 5),
-                              StatefulBuilder(
-                                key: _selectionKey,
-                                builder: (BuildContext context, void Function(void Function()) _) {
-                                  return AnimatedContainer(duration: 500.ms, width: 60, height: _activeDay == index ? 2 : 0, color: orange);
-                                },
-                              ),
-                            ],
-                          ),
-                        );
-                      },
+                                const SizedBox(height: 5),
+                                StatefulBuilder(
+                                  key: _selectionKey,
+                                  builder: (BuildContext context, void Function(void Function()) _) {
+                                    return AnimatedContainer(duration: 500.ms, width: 60, height: _activeDay == index ? 2 : 0, color: orange);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  ),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height * .7,
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _translations.length,
-                itemBuilder: (BuildContext context, int indexI) {
-                  final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
-                  if (items.isEmpty) {
-                    return const Center(child: Text("NOT YET", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)));
-                  }
-                  return StepperListView(
-                    stepperData: items.map((Map<String, dynamic> e) => StepperItemData(content: e)).toList(),
-                    stepAvatar: (BuildContext context, dynamic value) {
-                      return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
-                    },
-                    stepContentWidget: (BuildContext context, dynamic value) {
-                      return Container();
-                    },
-                  );
-                },
+              const SizedBox(height: 10),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * .7,
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: _translations.length,
+                  itemBuilder: (BuildContext context, int indexI) {
+                    final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
+                    if (items.isEmpty) {
+                      return const Center(child: Text("NOT YET", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)));
+                    }
+                    return StepperListView(
+                      stepperData: items.map((Map<String, dynamic> e) => StepperItemData(content: e)).toList(),
+                      stepAvatar: (BuildContext context, dynamic value) {
+                        return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
+                      },
+                      stepContentWidget: (BuildContext context, dynamic value) {
+                        return Container();
+                      },
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

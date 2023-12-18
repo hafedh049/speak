@@ -8,11 +8,18 @@ Future<bool> load() async {
     Hive.init((await getApplicationDocumentsDirectory()).path);
     Hive.deleteBoxFromDisk("translations");
     translationsBox = await Hive.openBox("translations");
-    if (translationsBox!.get("translations") == null) {
+    final Map<String, dynamic>? data = translationsBox!.get("translations");
+    if (data == null) {
       translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{});
     }
-    if (translationsBox!.get("translations").isEmpty) {
+    if (data!.isEmpty) {
       translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
+    }
+    if (!isToday(data.keys.last.splitMapJoin(" ")[0]) && data.values.last.isEmpty) {
+      translationsBox!.put("translations", data..remove(data.keys.last));
+    }
+    if (!isToday(data.keys.last.splitMapJoin(" ")[0])) {
+      translationsBox!.put("translations", data..addAll(<String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]}));
     }
     return true;
   } catch (e) {
@@ -20,12 +27,6 @@ Future<bool> load() async {
   }
 }
 
-bool isToday(String date) {
-  final List<String> currentDate = DateTime.now().toString().split(" ")[0].split("-");
-  final List<String> date_ = date.split("-");
-  return currentDate.every((String element) => date_.contains(element));
-}
+bool isToday(String date) => DateTime.now().toString().split(" ")[0].split("-") == date.split("-");
 
-void showToast(String message) {
-  Fluttertoast.showToast(msg: message, fontSize: 16, backgroundColor: orange.withOpacity(.6));
-}
+void showToast(String message) => Fluttertoast.showToast(msg: message, fontSize: 16, backgroundColor: orange.withOpacity(.6));
