@@ -22,7 +22,9 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
   final GlobalKey<State> _outputKey = GlobalKey<State>();
 
-   final GoogleTranslator translator = GoogleTranslator();
+   final GoogleTranslator _translator = GoogleTranslator();
+
+
 
   @override
   void dispose() {
@@ -138,7 +140,7 @@ class _CreateState extends State<Create> {
                           key: _outputKey,
                           builder: (BuildContext context, void Function(void Function()) _) {
                             return FutureBuilder(
-                              future: ,
+                              future: _translator.translate(sourceText),
                               builder: (BuildContext context,AsyncSnapshot<> snapshot) {
                                 return AnimatedTextKit(
                                   animatedTexts: <AnimatedText>[
