@@ -123,6 +123,7 @@ class _CreateState extends State<Create> {
                           const SizedBox(height: 10),
                           Expanded(
                             child: ListView.separated(
+                              padding: EdgeInsets.zero,
                               itemCount: languageMap.length,
                               itemBuilder: (BuildContext context, int index) => GestureDetector(
                                 onTap: () {
