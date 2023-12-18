@@ -124,7 +124,9 @@ class _CreateState extends State<Create> {
                               itemCount: languageMap.length,
                               itemBuilder: (BuildContext context, int index) => GestureDetector(
                                 onTap: () {
-                                 if(){ _fromKey.currentState!.setState(() =>_from = languageMap.keys.elementAt(index) );}
+                                  if (_from != languageMap.keys.elementAt(index)) {
+                                    _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                  }
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
