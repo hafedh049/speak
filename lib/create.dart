@@ -316,7 +316,7 @@ class _CreateState extends State<Create> {
                             decoration: BoxDecoration(color: _inputController.text.trim().isEmpty ? orange.withOpacity(.6) : orange, borderRadius: BorderRadius.circular(5)),
                             child: const Row(
                               children: <Widget>[
-                                Icon(Bootstrap.save, size: 20, color: white),
+                                Icon(Bootstrap.save, size: 20, color: _inputController.text.trim().isEmpty ? white.withOpacity(.6) : white),
                                 SizedBox(width: 5),
                                 Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
                               ],
