@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
+import 'package:translator/translator.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -21,7 +22,7 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
   final GlobalKey<State> _outputKey = GlobalKey<State>();
 
-   final translator = GoogleTranslator();
+   final GoogleTranslator translator = GoogleTranslator();
 
   @override
   void dispose() {
