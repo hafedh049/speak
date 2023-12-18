@@ -98,7 +98,12 @@ class _CreateState extends State<Create> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  showModalBottomSheet(context: context, builder: (BuildContext context) => ,);
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  );
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
