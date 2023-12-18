@@ -82,7 +82,6 @@ class _CreateState extends State<Create> {
                         _outputClipboardKey.currentState!.setState(() {});
                         _outputSpeakKey.currentState!.setState(() {});
                       }
-
                       _outputKey.currentState!.setState(() {});
                     },
                     decoration: InputDecoration(
