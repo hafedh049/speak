@@ -128,14 +128,15 @@ class _CreateState extends State<Create> {
                     children: <Widget>[
                       Expanded(
                         child: StatefulBuilder(
-                            key: _outputClipboardKey,
-                            builder: (BuildContext context, void Function(void Function()) _) {
-                              return AnimatedTextKit(
-                                animatedTexts: <AnimatedText>[
-                                  TypewriterAnimatedText(_inputController.text),
-                                ],
-                              );
-                            }),
+                          key: _outputKey,
+                          builder: (BuildContext context, void Function(void Function()) _) {
+                            return AnimatedTextKit(
+                              animatedTexts: <AnimatedText>[
+                                TypewriterAnimatedText(_inputController.text),
+                              ],
+                            );
+                          },
+                        ),
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
