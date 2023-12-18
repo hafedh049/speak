@@ -167,13 +167,13 @@ class _CreateState extends State<Create> {
                   ],
                 ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  StatefulBuilder(
-                    key: _sourceEnglishKey,
-                    builder: (BuildContext context, void Function(void Function()) _) {
-                      return IgnorePointer(
+              StatefulBuilder(
+                key: _sourceEnglishKey,
+                builder: (BuildContext context, void Function(void Function()) _) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IgnorePointer(
                         ignoring: !_isSourceEnglish,
                         child: AnimatedOpacity(
                           duration: 500.ms,
@@ -184,23 +184,23 @@ class _CreateState extends State<Create> {
                             callbackUp: () async => await _stopListening(),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                  StatefulBuilder(
-                    key: _micStateKey,
-                    builder: (BuildContext context, void Function(void Function()) _) {
-                      return AnimatedContainer(duration: 500.ms, width: 30, height: 2, color: _speechEnabled ? Colors.lightBlueAccent : Colors.redAccent);
-                    },
-                  ),
-                  const SizedBox(height: 5),
-                  StatefulBuilder(
-                    key: _recordStateKey,
-                    builder: (BuildContext context, void Function(void Function()) _) {
-                      return AnimatedContainer(duration: 500.ms, width: 60, height: _record ? 2 : 0, color: Colors.lightGreenAccent);
-                    },
-                  ),
-                ],
+                      ),
+                      StatefulBuilder(
+                        key: _micStateKey,
+                        builder: (BuildContext context, void Function(void Function()) _) {
+                          return AnimatedContainer(duration: 500.ms, width: 30, height: 2, color: _speechEnabled ? Colors.lightBlueAccent : Colors.redAccent);
+                        },
+                      ),
+                      const SizedBox(height: 5),
+                      StatefulBuilder(
+                        key: _recordStateKey,
+                        builder: (BuildContext context, void Function(void Function()) _) {
+                          return AnimatedContainer(duration: 500.ms, width: 60, height: _record ? 2 : 0, color: Colors.lightGreenAccent);
+                        },
+                      ),
+                    ],
+                  );
+                },
               ),
               GestureDetector(
                 onTap: () {
