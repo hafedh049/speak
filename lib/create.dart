@@ -67,7 +67,9 @@ class _CreateState extends State<Create> {
                   child: TextField(
                     controller: _inputController,
                     onChanged: (String value) {
-                      if(value.trim().length <= 1)
+                      if (value.trim().length <= 1) {
+                        _inputClearKey.currentState!.setState(() {});
+                      }
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
