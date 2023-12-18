@@ -314,10 +314,10 @@ class _CreateState extends State<Create> {
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                             decoration: BoxDecoration(color: _inputController.text.trim().isEmpty ? orange.withOpacity(.6) : orange, borderRadius: BorderRadius.circular(5)),
-                            child: const Row(
+                            child: Row(
                               children: <Widget>[
                                 Icon(Bootstrap.save, size: 20, color: _inputController.text.trim().isEmpty ? white.withOpacity(.6) : white),
-                                SizedBox(width: 5),
+                                const SizedBox(width: 5),
                                 Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
                               ],
                             ),
