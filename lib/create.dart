@@ -288,7 +288,7 @@ class _CreateState extends State<Create> {
                   const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
                   const Spacer(),
                   StatefulBuilder(
-                            key: _inputClearKey,
+                            key: _saveKey,
                             builder: (BuildContext context, void Function(void Function()) _) {
                               return GestureDetector(
                         onTap: () async {
