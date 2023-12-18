@@ -376,7 +376,7 @@ class _CreateState extends State<Create> {
                 ),
               ),
               const SizedBox(height: 20),
-              Flexible(
+              Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
