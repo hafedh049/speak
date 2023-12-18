@@ -292,7 +292,7 @@ class _CreateState extends State<Create> {
                       key: _saveKey,
                       builder: (BuildContext context, void Function(void Function()) _) {
                         return GestureDetector(
-                          onTap: () async {
+                          onTap:_inputController.text.trim().ise () async {
                             final Map<String, dynamic> data = translationsBox!.get("translations");
                             if (isToday(data.keys.first)) {
                               data.values.last.add(
