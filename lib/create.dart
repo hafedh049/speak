@@ -112,7 +112,7 @@ class _CreateState extends State<Create> {
                               decoration: BoxDecoration(border: Border.all(color: orange)),
                               child: TextField(
                                 onChanged: (String value) {},
-                                decoration: const InputDecoration(border: InputBorder.none, hintText: "Type a langugage"),
+                                decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
                               ),
                             ),
                           ),
