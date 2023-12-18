@@ -335,6 +335,7 @@ class _CreateState extends State<Create> {
                         _inputClipboardKey.currentState!.setState(() {});
                         _outputClipboardKey.currentState!.setState(() {});
                         _outputSpeakKey.currentState!.setState(() {});
+                        _saveKey.currentState!.setState(() {});
                       }
                       _outputKey.currentState!.setState(() {});
                     },
@@ -363,6 +364,7 @@ class _CreateState extends State<Create> {
                                             _outputClipboardKey.currentState!.setState(() {});
                                             _outputSpeakKey.currentState!.setState(() {});
                                             _outputKey.currentState!.setState(() {});
+                                            _saveKey.currentState!.setState(() {});
                                             _output = "";
                                           },
                                     icon: const Icon(Bootstrap.x, size: 20, color: white)),
