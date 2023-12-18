@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/utils/globals.dart';
+import 'package:speak/utils/methods.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -80,9 +81,12 @@ class _CreateState extends State<Create> {
                           const SizedBox(height: 10),
                           Container(
                             decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {
-                              showToast
-                            }, icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
+                            child: IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  showToast("Text Copied");
+                                },
+                                icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
                           ),
                         ],
                       ),
