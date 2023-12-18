@@ -21,6 +21,8 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
   final GlobalKey<State> _outputKey = GlobalKey<State>();
 
+   final translator = GoogleTranslator();
+
   @override
   void dispose() {
     _inputController.dispose();
