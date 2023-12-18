@@ -71,7 +71,7 @@ class _CreateState extends State<Create> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           StatefulBuilder(
-                            stream: null,
+                            key: _inputClipboardKey,
                             builder: (context, snapshot) {
                               return Container(
                                 decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
