@@ -140,7 +140,7 @@ class _CreateState extends State<Create> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     StatefulBuilder(
-                      key: _sourceEnglishKey,
+                      key: _fromKey,
                       builder: (BuildContext context, void Function(void Function()) _) {
                         return Text(_from.replaceFirst(" ", "\n"), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500), textAlign: TextAlign.center);
                       },
