@@ -82,7 +82,7 @@ class _CreateState extends State<Create> {
                         _outputClipboardKey.currentState!.setState(() {});
                         _outputSpeakKey.currentState!.setState(() {});
                       }
-                      _outputKey.currentState!.setState(() {});
+                      if(value.trim().isNotEmpty){_outputKey.currentState!.setState(() {});}
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -141,7 +141,7 @@ class _CreateState extends State<Create> {
                           key: _outputKey,
                           builder: (BuildContext context, void Function(void Function()) _) {
                             return FutureBuilder(
-                              future: _translator.translate(sourceText),
+                              future: _translator.translate(_inputController.text),
                               builder: (BuildContext context,AsyncSnapshot<> snapshot) {
                                 return AnimatedTextKit(
                                   animatedTexts: <AnimatedText>[
