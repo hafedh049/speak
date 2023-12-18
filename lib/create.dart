@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -117,7 +118,13 @@ class _CreateState extends State<Create> {
                   decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     children: <Widget>[
-                      Expanded(child: Text(_inputController.text)),
+                      Expanded(
+                        child: AnimatedTextKit(
+                          animatedTexts: <AnimatedText>[
+                            TypewriterAnimatedText(_inputController.text),
+                          ],
+                        ),
+                      ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
