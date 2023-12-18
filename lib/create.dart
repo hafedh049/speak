@@ -120,7 +120,7 @@ class _CreateState extends State<Create> {
                           Expanded(
                             child: ListView.separated(
                               itemCount: languageMap.length,
-                              itemBuilder: (BuildContext context, int index) => GestureDetector(child: Container(decoration: BoxDecoration(color: ),child: Text(),)),
+                              itemBuilder: (BuildContext context, int index) => GestureDetector(child: Container(decoration: BoxDecoration(color: ),child: Text(),),),
                               separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms),
                             ),
                           ),
