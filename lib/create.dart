@@ -24,7 +24,8 @@ class _CreateState extends State<Create> {
 
    final GoogleTranslator _translator = GoogleTranslator();
 
-
+  String _from = "en";
+  String _to = "ar";
 
   @override
   void dispose() {
