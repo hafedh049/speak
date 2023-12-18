@@ -130,7 +130,11 @@ class _CreateState extends State<Create> {
                                   if (_from != languageMap.keys.elementAt(index)) {
                                     _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
                                     if (_to == _from) {
-                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(Random().nextInt(languageMap.length)));
+                                      int indx = 0;
+                                      while (indx == index) {
+                                        indx = Random().nextInt(languageMap.length);
+                                      }
+                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt());
                                     }
                                   }
                                   Navigator.pop(context);
