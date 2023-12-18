@@ -289,7 +289,7 @@ class _CreateState extends State<Create> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () async {
-                      await translationsBox!.put(key, value);
+                      await translationsBox!.put("translations", value);
                       // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     },
