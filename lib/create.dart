@@ -288,7 +288,9 @@ class _CreateState extends State<Create> {
                   const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
                   const Spacer(),
                   GestureDetector(
-                    onTap: () async {},
+                    onTap: () async {
+                      translationsBox!.put(key, value);
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
