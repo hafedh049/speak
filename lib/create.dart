@@ -298,7 +298,7 @@ class _CreateState extends State<Create> {
                                 <String, dynamic>{
                                   "createdAt": DateTime.now(),
                                   "input": _inputController.text.trim(),
-                                  "input": _inputController.text.trim(),
+                                  "output": _output,
                                 },
                               );
                             }
