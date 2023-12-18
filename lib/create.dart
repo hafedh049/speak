@@ -96,13 +96,16 @@ class _CreateState extends State<Create> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text(_from.replaceFirst(" ", "\n"), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
-                  const SizedBox(height: 5),
-                  AnimatedContainer(duration: 500.ms, width: 60, height: 2, color: orange),
-                ],
+              GestureDetector(
+                onTap: () {},
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(_from.replaceFirst(" ", "\n"), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
+                    const SizedBox(height: 5),
+                    AnimatedContainer(duration: 500.ms, width: 60, height: 2, color: orange),
+                  ],
+                ),
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
