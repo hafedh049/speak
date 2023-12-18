@@ -73,6 +73,8 @@ class _CreateState extends State<Create> {
                       if (value.trim().length <= 1) {
                         _inputClearKey.currentState!.setState(() {});
                         _inputClipboardKey.currentState!.setState(() {});
+                        _inputClearKey.currentState!.setState(() {});
+                        _inputClipboardKey.currentState!.setState(() {});
                       }
                       _outputKey.currentState!.setState(() {});
                     },
