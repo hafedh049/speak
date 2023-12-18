@@ -97,7 +97,9 @@ class _CreateState extends State<Create> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (BuildContext context) => ,);
+                },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
