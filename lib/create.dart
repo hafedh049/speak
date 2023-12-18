@@ -294,7 +294,13 @@ class _CreateState extends State<Create> {
                           onTap: () async {
                             final Map<String, dynamic> data = translationsBox!.get("translations");
                             if (isToday(data.keys.first)) {
-                              data.values.last.add(<String, dynamic>{"createdAt": DateTime.now(), "input": _inputController.text.trim()});
+                              data.values.last.add(
+                                <String, dynamic>{
+                                  "createdAt": DateTime.now(),
+                                  "input": _inputController.text.trim(),
+                                  "input": _inputController.text.trim(),
+                                },
+                              );
                             }
                             await translationsBox!.put("translations", data);
                             // ignore: use_build_context_synchronously
