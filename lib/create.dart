@@ -292,21 +292,23 @@ class _CreateState extends State<Create> {
                       key: _saveKey,
                       builder: (BuildContext context, void Function(void Function()) _) {
                         return GestureDetector(
-                          onTap:_inputController.text.trim().ise () async {
-                            final Map<String, dynamic> data = translationsBox!.get("translations");
-                            if (isToday(data.keys.first)) {
-                              data.values.last.add(
-                                <String, dynamic>{
-                                  "createdAt": DateTime.now(),
-                                  "input": _inputController.text.trim(),
-                                  "output": _output,
+                          onTap: _inputController.text.trim().isEmpty
+                              ? null
+                              : () async {
+                                  final Map<String, dynamic> data = translationsBox!.get("translations");
+                                  if (isToday(data.keys.first)) {
+                                    data.values.last.add(
+                                      <String, dynamic>{
+                                        "createdAt": DateTime.now(),
+                                        "input": _inputController.text.trim(),
+                                        "output": _output,
+                                      },
+                                    );
+                                  }
+                                  await translationsBox!.put("translations", data);
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pop(context);
                                 },
-                              );
-                            }
-                            await translationsBox!.put("translations", data);
-                            // ignore: use_build_context_synchronously
-                            Navigator.pop(context);
-                          },
                           child: Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
