@@ -309,7 +309,8 @@ class _CreateState extends State<Create> {
                                   // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                 },
-                          child: Container(
+                          child: AnimatedContainer(
+                            duration: 500.ms,
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                             decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
