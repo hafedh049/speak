@@ -291,11 +291,7 @@ class _CreateState extends State<Create> {
                     onTap: () async {
                       final Map<String, dynamic> data = translationsBox!.get("translations");
                       if (isToday(data.keys.first)) {
-                        final List<String> now = DateTime.now().toString().split(" ");
-                        final String time = now[1];
-                        final String date = now[0];
-
-                        data.values.last.add(<String, dynamic>{});
+                        data.values.last.add(<String, dynamic>{"createdAt": DateTime.now()});
                       }
                       await translationsBox!.put(
                         "translations",
