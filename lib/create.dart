@@ -297,7 +297,7 @@ class _CreateState extends State<Create> {
                             data.values.last.add(<String, dynamic>{"createdAt": DateTime.now(),"input":});
                           }
                           await translationsBox!.put(
-                            "translations",
+                            "translations",data
                           );
                           // ignore: use_build_context_synchronously
                           Navigator.pop(context);
