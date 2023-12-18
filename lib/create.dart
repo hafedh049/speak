@@ -292,8 +292,8 @@ class _CreateState extends State<Create> {
                       final Map<String, dynamic> data = translationsBox!.get("translations");
                       if (isToday(data.keys.first)) {
                         final List<String> now = DateTime.now().toString().split(" ");
-                        final String time = "";
-                        final String date = "";
+                        final String time = now[1];
+                        final String date = now[0];
 
                         data.values.last.add(<String, dynamic>{});
                       }
