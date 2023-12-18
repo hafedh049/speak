@@ -101,8 +101,11 @@ class _CreateState extends State<Create> {
                   showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) => Container(
-                      height: MediaQuery.sizeOf(context).height * .3,
+                      height: MediaQuery.sizeOf(context).height * .4,
                       padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: <Widget>[],
+                      ),
                     ),
                   );
                 },
