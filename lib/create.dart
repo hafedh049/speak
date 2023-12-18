@@ -149,7 +149,7 @@ class _CreateState extends State<Create> {
                                 }
                                 return AnimatedTextKit(
                                   animatedTexts: <AnimatedText>[
-                                    TypewriterAnimatedText(snapshot.hasData ? snapshot.data!.text : ""),
+                                    TypewriterAnimatedText(snapshot.hasData ? snapshot.data!.text : "Wait..."),
                                   ],
                                 );
                               },
