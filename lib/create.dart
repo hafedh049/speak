@@ -129,6 +129,7 @@ class _CreateState extends State<Create> {
                                 onTap: () {
                                   if (_from != languageMap.keys.elementAt(index)) {
                                     _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                    _sourceEnglishKey.currentState!.setState(() {});
                                     if (_from == _to) {
                                       int indx = 0;
                                       while (indx == index) {
