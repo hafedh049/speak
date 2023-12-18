@@ -229,8 +229,8 @@ class _CreateState extends State<Create> {
                               itemCount: languageMap.length,
                               itemBuilder: (BuildContext context, int index) => GestureDetector(
                                 onTap: () {
-                                  if (_from != languageMap.keys.elementAt(index)) {
-                                    _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                  if (_to != languageMap.keys.elementAt(index)) {
+                                    __toKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
                                     if (_to == _from) {
                                       int indx = 0;
                                       while (indx == index) {
