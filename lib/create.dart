@@ -135,15 +135,23 @@ class _CreateState extends State<Create> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
-                          ),
+                          StatefulBuilder(
+                              key: _inputClipboardKey,
+                              builder: (BuildContext context, void Function(void Function()) _) {
+                                return Container(
+                                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                  child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
+                                );
+                              }),
                           const SizedBox(height: 10),
-                          Container(
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.soundwave, size: 20, color: white)),
-                          ),
+                          StatefulBuilder(
+                              key: _inputClipboardKey,
+                              builder: (BuildContext context, void Function(void Function()) _) {
+                                return Container(
+                                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                  child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.soundwave, size: 20, color: white)),
+                                );
+                              }),
                         ],
                       ),
                     ],
