@@ -120,33 +120,31 @@ class _CreateState extends State<Create> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Expanded(
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              itemCount: languageMap.length,
-                              itemBuilder: (BuildContext context, int index) => GestureDetector(
-                                onTap: () {
-                                  if (_from != languageMap.keys.elementAt(index)) {
-                                    _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
-                                    _sourceEnglishKey.currentState!.setState(() {});
-                                    if (_from == _to) {
-                                      int indx = 0;
-                                      while (indx == index) {
-                                        indx = Random().nextInt(languageMap.length);
-                                      }
-                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(indx));
+                          ListView.separated(
+                            shrinkWrap: true,
+                            itemCount: languageMap.length,
+                            itemBuilder: (BuildContext context, int index) => GestureDetector(
+                              onTap: () {
+                                if (_from != languageMap.keys.elementAt(index)) {
+                                  _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                  _sourceEnglishKey.currentState!.setState(() {});
+                                  if (_from == _to) {
+                                    int indx = 0;
+                                    while (indx == index) {
+                                      indx = Random().nextInt(languageMap.length);
                                     }
+                                    _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(indx));
                                   }
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  padding: _from == languageMap.keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
-                                  decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
-                                  child: Text(languageMap.keys.elementAt(index)),
-                                ),
+                                }
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                padding: _from == languageMap.keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
+                                decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
+                                child: Text(languageMap.keys.elementAt(index)),
                               ),
-                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
                             ),
+                            separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
                           ),
                         ],
                       ),
