@@ -288,35 +288,32 @@ class _CreateState extends State<Create> {
                   const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
                   const Spacer(),
                   StatefulBuilder(
-                            key: _saveKey,
-                            builder: (BuildContext context, void Function(void Function()) _) {
-                              return GestureDetector(
-                        onTap: () async {
-                          final Map<String, dynamic> data = translationsBox!.get("translations");
-                          if (isToday(data.keys.first)) {
-                            data.values.last.add(<String, dynamic>{"createdAt": DateTime.now(),"input":});
-                          }
-                          await translationsBox!.put(
-                            "translations",data
-                          );
-                          // ignore: use_build_context_synchronously
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                          decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                          child: const Row(
-                            children: <Widget>[
-                              Icon(Bootstrap.save, size: 20, color: white),
-                              SizedBox(width: 5),
-                              Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
-                            ],
+                      key: _saveKey,
+                      builder: (BuildContext context, void Function(void Function()) _) {
+                        return GestureDetector(
+                          onTap: () async {
+                            final Map<String, dynamic> data = translationsBox!.get("translations");
+                            if (isToday(data.keys.first)) {
+                              data.values.last.add(<String, dynamic>{"createdAt": DateTime.now(), "input": _inputController.text.trim()});
+                            }
+                            await translationsBox!.put("translations", data);
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                            decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
+                            child: const Row(
+                              children: <Widget>[
+                                Icon(Bootstrap.save, size: 20, color: white),
+                                SizedBox(width: 5),
+                                Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }
-                  ),
+                        );
+                      }),
                 ],
               ),
               const SizedBox(height: 20),
