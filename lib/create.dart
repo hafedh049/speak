@@ -69,6 +69,7 @@ class _CreateState extends State<Create> {
                     onChanged: (String value) {
                       if (value.trim().length <= 1) {
                         _inputClearKey.currentState!.setState(() {});
+                        _inputClipboardKey.currentState!.setState(() {});
                       }
                     },
                     decoration: InputDecoration(
