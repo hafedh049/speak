@@ -127,7 +127,7 @@ class _CreateState extends State<Create> {
                                   child: Text(languageMap.keys.elementAt(index)),
                                 ),
                               ),
-                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms),
+                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange),
                             ),
                           ),
                         ],
