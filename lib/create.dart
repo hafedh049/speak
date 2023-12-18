@@ -99,7 +99,7 @@ class _CreateState extends State<Create> {
                             key: _inputClipboardKey,
                             builder: (BuildContext context, void Function(void Function()) _) {
                               return Container(
-                                decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                decoration: BoxDecoration(shape: BoxShape.circle, color: _inputController.text.trim().isEmpty ? orange.withOpacity(.6) : orange),
                                 child: IconButton(
                                   padding: EdgeInsets.zero,
                                   onPressed: () async {
