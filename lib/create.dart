@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
@@ -84,6 +85,7 @@ class _CreateState extends State<Create> {
                             child: IconButton(
                                 padding: EdgeInsets.zero,
                                 onPressed: () {
+                                  Clipboard.setData(ClipboardData(text: _inputController.text));
                                   showToast("Text Copied");
                                 },
                                 icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
