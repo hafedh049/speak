@@ -109,7 +109,7 @@ class _CreateState extends State<Create> {
                         children: <Widget>[
                           Flexible(
                             child: TextField(
-                              decoration: InputDecoration(),
+                              decoration: InputDecoration(border: InputBorder.none),
                             ),
                           ),
                         ],
