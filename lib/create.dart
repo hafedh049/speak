@@ -238,6 +238,7 @@ class _CreateState extends State<Create> {
                                         indx = Random().nextInt(languageMap.length);
                                       }
                                       _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(indx));
+                                      _sourceEnglishKey.currentState!.setState(() {});
                                     }
                                   }
                                   Navigator.pop(context);
