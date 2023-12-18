@@ -136,7 +136,7 @@ class _CreateState extends State<Create> {
                           builder: (BuildContext context, void Function(void Function()) _) {
                             return FutureBuilder(
                               future: ,
-                              builder: (context, snapshot) {
+                              builder: (BuildContext context,AsyncSnapshot<> snapshot) {
                                 return AnimatedTextKit(
                                   animatedTexts: <AnimatedText>[
                                     TypewriterAnimatedText(_inputController.text),
