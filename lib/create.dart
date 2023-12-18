@@ -290,6 +290,7 @@ class _CreateState extends State<Create> {
                   GestureDetector(
                     onTap: () async {
                       await translationsBox!.put(key, value);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       alignment: Alignment.center,
