@@ -22,7 +22,7 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
   final GlobalKey<State> _outputKey = GlobalKey<State>();
 
-   final GoogleTranslator _translator = GoogleTranslator();
+  final GoogleTranslator _translator = GoogleTranslator();
 
   String _from = "en";
   String _to = "ar";
@@ -82,7 +82,9 @@ class _CreateState extends State<Create> {
                         _outputClipboardKey.currentState!.setState(() {});
                         _outputSpeakKey.currentState!.setState(() {});
                       }
-                      if(value.trim().isNotEmpty){_outputKey.currentState!.setState(() {});}
+                      if (value.trim().isNotEmpty) {
+                        _outputKey.currentState!.setState(() {});
+                      }
                     },
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -141,15 +143,14 @@ class _CreateState extends State<Create> {
                           key: _outputKey,
                           builder: (BuildContext context, void Function(void Function()) _) {
                             return FutureBuilder(
-                              future: _translator.translate(_inputController.text),
-                              builder: (BuildContext context,AsyncSnapshot<> snapshot) {
-                                return AnimatedTextKit(
-                                  animatedTexts: <AnimatedText>[
-                                    TypewriterAnimatedText(_inputController.text),
-                                  ],
-                                );
-                              }
-                            );
+                                future: _translator.translate(_inputController.text),
+                                builder: (BuildContext context, AsyncSnapshot<Translation> snapshot) {
+                                  return AnimatedTextKit(
+                                    animatedTexts: <AnimatedText>[
+                                      TypewriterAnimatedText(_inputController.text),
+                                    ],
+                                  );
+                                });
                           },
                         ),
                       ),
