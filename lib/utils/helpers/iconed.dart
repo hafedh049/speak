@@ -44,7 +44,7 @@ class _IconedState extends State<Iconed> {
       },
       child: AnimatedContainer(
         duration: 500.ms,
-        margin: const EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(border: Border.all(width: 1, color: _borderState ? orange : orange.withOpacity(.6)), shape: BoxShape.circle, color: _colorState ? orange : transparent),
         child: Icon(widget.icon, size: widget.iconSize, color: _colorState ? secondaryColor : white),
