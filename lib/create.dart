@@ -127,6 +127,7 @@ class _CreateState extends State<Create> {
                                   if (_from != languageMap.keys.elementAt(index)) {
                                     _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
                                   }
+                                  Navigator.pop(context);
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
