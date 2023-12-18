@@ -109,8 +109,8 @@ class _CreateState extends State<Create> {
                         children: <Widget>[
                           Flexible(
                             child: TextField(
-                              onChanged: (value) {},
-                              decoration: InputDecoration(border: InputBorder.none, hintText: "Type a langugage"),
+                              onChanged: (String value) {},
+                              decoration: const InputDecoration(border: InputBorder.none, hintText: "Type a langugage"),
                             ),
                           ),
                         ],
