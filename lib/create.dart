@@ -143,7 +143,7 @@ class _CreateState extends State<Create> {
                           key: _outputKey,
                           builder: (BuildContext context, void Function(void Function()) _) {
                             return FutureBuilder<Translation>(
-                              future: _translator.translate(_inputController.text),
+                              future: _translator.translate(_inputController.text, from: _from, to: _to),
                               builder: (BuildContext context, AsyncSnapshot<Translation> snapshot) {
                                 if (snapshot.hasError) {
                                   showToast(snapshot.error.toString());
