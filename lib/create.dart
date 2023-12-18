@@ -113,7 +113,7 @@ class _CreateState extends State<Create> {
                         children: <Widget>[
                           Flexible(
                             child: Container(
-                              decoration: BoxDecoration(border: Border.all(color: orange)),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: orange)),
                               child: TextField(
                                 onChanged: (String value) {},
                                 decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
@@ -216,7 +216,7 @@ class _CreateState extends State<Create> {
                         children: <Widget>[
                           Flexible(
                             child: Container(
-                              decoration: BoxDecoration(border: Border.all(color: orange)),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: orange)),
                               child: TextField(
                                 onChanged: (String value) {},
                                 decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
