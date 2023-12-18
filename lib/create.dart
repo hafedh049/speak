@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -127,7 +129,7 @@ class _CreateState extends State<Create> {
                                   if (_from != languageMap.keys.elementAt(index)) {
                                     _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
                                     if (_to == _from) {
-                                      _toKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(Random().nextInt(languageMap.length)));
                                     }
                                   }
                                   Navigator.pop(context);
