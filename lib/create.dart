@@ -293,7 +293,7 @@ class _CreateState extends State<Create> {
                       if (isToday(data.keys.first)) {
                         String time = "";
                         String date = "";
-                        <String>(date, time) = DateTime.now().toString().split(" ");
+                        (date, time) = DateTime.now().toString().split(" ");
                         data.values.last.add(<String, dynamic>{});
                       }
                       await translationsBox!.put(
