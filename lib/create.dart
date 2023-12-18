@@ -148,6 +148,7 @@ class _CreateState extends State<Create> {
                                   showToast(snapshot.error.toString());
                                 }
                                 return AnimatedTextKit(
+                                  totalRepeatCount: 1,
                                   animatedTexts: <AnimatedText>[
                                     TypewriterAnimatedText(snapshot.hasData ? snapshot.data!.text : "Wait..."),
                                   ],
