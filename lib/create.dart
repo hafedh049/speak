@@ -108,7 +108,9 @@ class _CreateState extends State<Create> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Flexible(
-                            child: TextField(),
+                            child: TextField(
+                              decoration: InputDecoration(),
+                            ),
                           ),
                         ],
                       ),
