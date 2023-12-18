@@ -203,7 +203,58 @@ class _CreateState extends State<Create> {
                 ],
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      height: MediaQuery.sizeOf(context).height * .4,
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            child: Container(
+                              decoration: BoxDecoration(border: Border.all(color: orange)),
+                              child: TextField(
+                                onChanged: (String value) {},
+                                decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Expanded(
+                            child: ListView.separated(
+                              padding: EdgeInsets.zero,
+                              itemCount: languageMap.length,
+                              itemBuilder: (BuildContext context, int index) => GestureDetector(
+                                onTap: () {
+                                  if (_from != languageMap.keys.elementAt(index)) {
+                                    _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                    if (_to == _from) {
+                                      int indx = 0;
+                                      while (indx == index) {
+                                        indx = Random().nextInt(languageMap.length);
+                                      }
+                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(indx));
+                                    }
+                                  }
+                                  Navigator.pop(context);
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
+                                  child: Text(languageMap.keys.elementAt(index)),
+                                ),
+                              ),
+                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
