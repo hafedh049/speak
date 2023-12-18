@@ -83,12 +83,13 @@ class _CreateState extends State<Create> {
                           Container(
                             decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
                             child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () async {
-                                  await Clipboard.setData(ClipboardData(text: _inputController.text));
-                                  showToast("Text Copied");
-                                },
-                                icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
+                              padding: EdgeInsets.zero,
+                              onPressed: () async {
+                                await Clipboard.setData(ClipboardData(text: _inputController.text));
+                                showToast("Text Copied");
+                              },
+                              icon: const Icon(Bootstrap.clipboard, size: 20, color: white),
+                            ),
                           ),
                         ],
                       ),
