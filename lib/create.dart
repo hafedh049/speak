@@ -106,7 +106,11 @@ class _CreateState extends State<Create> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[],
+                        children: <Widget>[
+                          Flexible(
+                            child: TextField(),
+                          ),
+                        ],
                       ),
                     ),
                   );
