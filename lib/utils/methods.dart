@@ -15,12 +15,6 @@ Future<bool> load() async {
     if (data!.isEmpty) {
       translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
     }
-    if (!isToday(data.keys.last.splitMapJoin(" ")[0]) && data.values.last.isEmpty) {
-      translationsBox!.put("translations", data..remove(data.keys.last));
-    }
-    if (!isToday(data.keys.last.splitMapJoin(" ")[0])) {
-      translationsBox!.put("translations", data..addAll(<String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]}));
-    }
     return true;
   } catch (e) {
     return false;
