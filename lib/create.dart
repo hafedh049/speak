@@ -19,6 +19,7 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _inputClipboardKey = GlobalKey<State>();
   final GlobalKey<State> _outputSpeakKey = GlobalKey<State>();
   final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
+  final GlobalKey<State> _outputClipboardKey = GlobalKey<State>();
 
   @override
   void dispose() {
