@@ -170,35 +170,37 @@ class _CreateState extends State<Create> {
               StatefulBuilder(
                 key: _sourceEnglishKey,
                 builder: (BuildContext context, void Function(void Function()) _) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      IgnorePointer(
-                        ignoring: !_isSourceEnglish,
-                        child: AnimatedOpacity(
-                          duration: 500.ms,
-                          opacity: _isSourceEnglish ? 1 : .5,
-                          child: Iconed(
-                            icon: Bootstrap.mic,
-                            callbackDown: () async => await _startListening(),
-                            callbackUp: () async => await _stopListening(),
+                  return AnimatedOpacity(
+                    duration: 500.ms,
+                    opacity: _isSourceEnglish ? 1 : .5,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IgnorePointer(
+                          ignoring: !_isSourceEnglish,
+                          child: AnimatedOpacity(
+                            child: Iconed(
+                              icon: Bootstrap.mic,
+                              callbackDown: () async => await _startListening(),
+                              callbackUp: () async => await _stopListening(),
+                            ),
                           ),
                         ),
-                      ),
-                      StatefulBuilder(
-                        key: _micStateKey,
-                        builder: (BuildContext context, void Function(void Function()) _) {
-                          return AnimatedContainer(duration: 500.ms, width: 30, height: 2, color: _speechEnabled ? Colors.lightBlueAccent : Colors.redAccent);
-                        },
-                      ),
-                      const SizedBox(height: 5),
-                      StatefulBuilder(
-                        key: _recordStateKey,
-                        builder: (BuildContext context, void Function(void Function()) _) {
-                          return AnimatedContainer(duration: 500.ms, width: 60, height: _record ? 2 : 0, color: Colors.lightGreenAccent);
-                        },
-                      ),
-                    ],
+                        StatefulBuilder(
+                          key: _micStateKey,
+                          builder: (BuildContext context, void Function(void Function()) _) {
+                            return AnimatedContainer(duration: 500.ms, width: 30, height: 2, color: _speechEnabled ? Colors.lightBlueAccent : Colors.redAccent);
+                          },
+                        ),
+                        const SizedBox(height: 5),
+                        StatefulBuilder(
+                          key: _recordStateKey,
+                          builder: (BuildContext context, void Function(void Function()) _) {
+                            return AnimatedContainer(duration: 500.ms, width: 60, height: _record ? 2 : 0, color: Colors.lightGreenAccent);
+                          },
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
