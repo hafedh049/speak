@@ -126,6 +126,9 @@ class _CreateState extends State<Create> {
                                 onTap: () {
                                   if (_from != languageMap.keys.elementAt(index)) {
                                     _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                    if (_to == _from) {
+                                      _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
+                                    }
                                   }
                                   Navigator.pop(context);
                                 },
