@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:speak/create.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/methods.dart';
 import 'package:stepper_list_view/stepper_list_view.dart';
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
   void initState() {
     final Map<dynamic, dynamic> data = translationsBox!.get("translations");
     _translations.addAll(data);
-    _activeDay = data.length;
+    _activeDay = data.length - 1;
     super.initState();
   }
 
@@ -38,12 +39,8 @@ class _HomeState extends State<Home> {
       floatingActionButton: Container(
         decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
         child: IconButton(
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: builder)),
-          icon: const Icon(
-            Bootstrap.plus,
-            size: 20,
-            color: white,
-          ),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Create())),
+          icon: const Icon(Bootstrap.plus, size: 20, color: white),
         ),
       ),
       body: Padding(
@@ -71,6 +68,7 @@ class _HomeState extends State<Home> {
                             _pageController.jumpToPage(index);
                           },
                           child: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -94,7 +92,7 @@ class _HomeState extends State<Home> {
                               StatefulBuilder(
                                 key: _selectionKey,
                                 builder: (BuildContext context, void Function(void Function()) _) {
-                                  return AnimatedContainer(duration: 500.ms, height: _activeDay == index ? 2 : 0, color: orange);
+                                  return AnimatedContainer(duration: 500.ms, width: 60, height: _activeDay == index ? 2 : 0, color: orange);
                                 },
                               ),
                             ],

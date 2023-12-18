@@ -10,41 +10,115 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
+  final TextEditingController _inputController = TextEditingController();
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 30),
-            Row(
-              children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                  child: IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Bootstrap.chevron_bar_left, size: 20, color: white)),
-                ),
-                const SizedBox(width: 10),
-                const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () async {},
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                    decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
-                    child: const Row(
-                      children: <Widget>[
-                        Icon(Bootstrap.save, size: 20, color: white),
-                        Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
-                      ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: <Widget>[
+              const SizedBox(height: 30),
+              Row(
+                children: <Widget>[
+                  Container(
+                    decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                    child: IconButton(padding: EdgeInsets.zero, onPressed: () => Navigator.pop(context), icon: const Icon(Bootstrap.chevron_bar_left, size: 20, color: white)),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () async {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      decoration: BoxDecoration(color: orange, borderRadius: BorderRadius.circular(5)),
+                      child: const Row(
+                        children: <Widget>[
+                          Icon(Bootstrap.save, size: 20, color: white),
+                          SizedBox(width: 5),
+                          Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Flexible(
+                child: Container(
+                  decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                  child: TextField(
+                    controller: _inputController,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.all(16),
+                      hintText: "Type something.",
+                      suffix: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                            child: IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  _inputController.clear();
+                                },
+                                icon: const Icon(Bootstrap.x, size: 20, color: white)),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {
+                              showToast
+                            }, icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 20),
-          ],
+              ),
+              const SizedBox(height: 20),
+              Flexible(
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child: Text(_inputController.text)),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.clipboard, size: 20, color: white)),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                            child: IconButton(padding: EdgeInsets.zero, onPressed: () {}, icon: const Icon(Bootstrap.soundwave, size: 20, color: white)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
