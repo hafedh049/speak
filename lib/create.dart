@@ -29,6 +29,8 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _micStateKey = GlobalKey<State>();
   final GlobalKey<State> _recordStateKey = GlobalKey<State>();
   final GlobalKey<State> _sourceEnglishKey = GlobalKey<State>();
+  final GlobalKey<State> _recordStateKey = GlobalKey<State>();
+  final GlobalKey<State> _sourceEnglishKey = GlobalKey<State>();
 
   final GoogleTranslator _translator = GoogleTranslator();
 
