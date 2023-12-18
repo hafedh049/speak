@@ -80,17 +80,21 @@ class _CreateState extends State<Create> {
                                 icon: const Icon(Bootstrap.x, size: 20, color: white)),
                           ),
                           const SizedBox(height: 10),
-                          Container(
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () async {
-                                await Clipboard.setData(ClipboardData(text: _inputController.text));
-                                showToast("Text Copied");
-                              },
-                              icon: const Icon(Bootstrap.clipboard, size: 20, color: white),
-                            ),
-                          ),
+                          StatefulBuilder(
+                              key: _inputClipboardKey,
+                              builder: (BuildContext context, void Function(void Function()) _) {
+                                return Container(
+                                  decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    onPressed: () async {
+                                      await Clipboard.setData(ClipboardData(text: _inputController.text));
+                                      showToast("Text Copied");
+                                    },
+                                    icon: const Icon(Bootstrap.clipboard, size: 20, color: white),
+                                  ),
+                                );
+                              }),
                         ],
                       ),
                     ),
