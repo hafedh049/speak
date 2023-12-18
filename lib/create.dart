@@ -71,8 +71,8 @@ class _CreateState extends State<Create> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           StatefulBuilder(
-                            key: _inputClipboardKey,
-                            builder: (context, snapshot) {
+                            key: _inputClearKey,
+                            builder: (BuildContext context, void Function(void Function()) _) {
                               return Container(
                                 decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
                                 child: IconButton(
