@@ -117,7 +117,13 @@ class _CreateState extends State<Create> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Expanded(child: ListView.separated(itemCount: languageMap.length, itemBuilder:(BuildContext context,int index) => ,separatorBuilder: (BuildContext context,int index) => AnimatedContainer(duration: 700.ms), ),),
+                          Expanded(
+                            child: ListView.separated(
+                              itemCount: languageMap.length,
+                              itemBuilder: (BuildContext context, int index) => Container(),
+                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms),
+                            ),
+                          ),
                         ],
                       ),
                     ),
