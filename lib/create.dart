@@ -66,6 +66,7 @@ class _CreateState extends State<Create> {
                   decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
                   child: TextField(
                     controller: _inputController,
+                    onChanged: (value) {},
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(16),
