@@ -14,6 +14,9 @@ class Create extends StatefulWidget {
 class _CreateState extends State<Create> {
   final TextEditingController _inputController = TextEditingController();
 
+  final GlobalKey<State> _inputClearKey = GlobalKey<State>();
+  final GlobalKey<State> _inputClearKey = GlobalKey<State>();
+
   @override
   void dispose() {
     _inputController.dispose();
