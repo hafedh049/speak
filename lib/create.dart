@@ -290,7 +290,7 @@ class _CreateState extends State<Create> {
                   GestureDetector(
                     onTap: () async {
                       final Map<String, dynamic> data = translationsBox!.get("translations");
-
+                      if (isToday(data.keys.first)) {}
                       await translationsBox!.put(
                         "translations",
                       );
