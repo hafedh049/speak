@@ -178,12 +178,10 @@ class _CreateState extends State<Create> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          IgnorePointer(
-                            child: Iconed(
-                              icon: Bootstrap.mic,
-                              callbackDown: () async => await _startListening(),
-                              callbackUp: () async => await _stopListening(),
-                            ),
+                          Iconed(
+                            icon: Bootstrap.mic,
+                            callbackDown: () async => await _startListening(),
+                            callbackUp: () async => await _stopListening(),
                           ),
                           StatefulBuilder(
                             key: _micStateKey,
