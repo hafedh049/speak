@@ -24,6 +24,8 @@ dependencies:
   flutter_tts: ^3.8.5
   animated_text_kit: ^4.2.2
   speech_to_text: ^6.5.1
+  page_transition: ^2.1.0
+  flutter_native_splash: ^2.3.8
 
 dev_dependencies:
   flutter_test:

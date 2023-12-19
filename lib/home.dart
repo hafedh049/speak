@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:speak/create.dart';
@@ -17,6 +18,7 @@ class _HomeState extends State<Home> {
   final Map<dynamic, dynamic> _translations = <dynamic, dynamic>{};
   final PageController _pageController = PageController();
   final GlobalKey<State> _selectionKey = GlobalKey<State>();
+
   int _activeDay = 0;
 
   @override
@@ -42,7 +44,10 @@ class _HomeState extends State<Home> {
         floatingActionButton: Container(
           decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
           child: IconButton(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const Create())),
+            onPressed: () {
+              flutterTts.stop();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Create()));
+            },
             icon: const Icon(Bootstrap.plus, size: 20, color: white),
           ),
         ),
@@ -111,17 +116,108 @@ class _HomeState extends State<Home> {
                   controller: _pageController,
                   itemCount: _translations.length,
                   itemBuilder: (BuildContext context, int indexI) {
-                    final List<Map<String, dynamic>> items = _translations.values.elementAt(indexI);
+                    final List<dynamic> items = _translations.values.elementAt(indexI);
                     if (items.isEmpty) {
                       return const Center(child: Text("NOT YET", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)));
                     }
+                    items.sort((dynamic a, dynamic b) => a["createdAt"].millisecondsSinceEpoch <= b["createdAt"].millisecondsSinceEpoch ? 1 : -1);
                     return StepperListView(
-                      stepperData: items.map((Map<String, dynamic> e) => StepperItemData(content: e)).toList(),
-                      stepAvatar: (BuildContext context, dynamic value) {
-                        return const PreferredSize(preferredSize: Size.fromRadius(10), child: Icon(FontAwesome.radio_solid, color: orange, size: 15));
-                      },
+                      stepperData: items.map((dynamic e) => StepperItemData(content: e)).toList(),
+                      stepAvatar: (BuildContext context, dynamic value) => const PreferredSize(preferredSize: Size.square(30), child: Icon(FontAwesome.paper_plane, color: orange, size: 25)),
                       stepContentWidget: (BuildContext context, dynamic value) {
-                        return Container();
+                        return Container(
+                          padding: const EdgeInsets.all(16),
+                          margin: const EdgeInsets.only(bottom: 8),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: secondaryColor),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextField(
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.all(16),
+                                    hintText: value.content["input"],
+                                    suffixIcon: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          margin: const EdgeInsets.all(8),
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                          child: IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () async {
+                                              await Clipboard.setData(ClipboardData(text: value.content["input"]));
+                                              showToast("Text Copied");
+                                            },
+                                            icon: const Icon(Bootstrap.clipboard, size: 20, color: white),
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                          child: IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () async {
+                                              flutterTts.setLanguage(languageMap[value.content["inputLanguage"]]!);
+                                              await flutterTts.speak(value.content["input"]);
+                                            },
+                                            icon: const Icon(Bootstrap.soundwave, size: 20, color: white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Divider(height: 1, thickness: 1, color: gray, indent: 25, endIndent: 25),
+                              const SizedBox(height: 10),
+                              Flexible(
+                                child: TextField(
+                                  readOnly: true,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    contentPadding: const EdgeInsets.all(16),
+                                    hintText: value.content["output"],
+                                    suffixIcon: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          margin: const EdgeInsets.all(8),
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                          child: IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () async {
+                                              await Clipboard.setData(ClipboardData(text: value.content["output"]));
+                                              showToast("Text Copied");
+                                            },
+                                            icon: const Icon(Bootstrap.clipboard, size: 20, color: white),
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
+                                          child: IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () async {
+                                              flutterTts.setLanguage(languageMap[value.content["outputLanguage"]]!);
+                                              await flutterTts.speak(value.content["output"]);
+                                            },
+                                            icon: const Icon(Bootstrap.soundwave, size: 20, color: white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                     );
                   },

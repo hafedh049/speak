@@ -4,8 +4,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:speak/home.dart';
 import 'package:speak/utils/globals.dart';
 import 'package:speak/utils/helpers/iconed.dart';
 import 'package:speak/utils/methods.dart';
@@ -34,10 +34,10 @@ class _CreateState extends State<Create> {
   final GlobalKey<State> _fromKey = GlobalKey<State>();
   final GlobalKey<State> _toKey = GlobalKey<State>();
   final GlobalKey<State> _saveKey = GlobalKey<State>();
+  final GlobalKey<State> _sourceListKey = GlobalKey<State>();
+  final GlobalKey<State> _targetListKey = GlobalKey<State>();
 
   final GoogleTranslator _translator = GoogleTranslator();
-
-  final FlutterTts _flutterTts = FlutterTts();
 
   final SpeechToText _speechToText = SpeechToText();
 
@@ -51,9 +51,13 @@ class _CreateState extends State<Create> {
 
   bool _isSourceEnglish = true;
 
+  String _source = "";
+
+  String _target = "";
+
   @override
   void dispose() {
-    _flutterTts.stop();
+    flutterTts.stop();
     _inputController.dispose();
     super.dispose();
   }
@@ -115,44 +119,50 @@ class _CreateState extends State<Create> {
                             child: Container(
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: orange)),
                               child: TextField(
-                                onChanged: (String value) {},
+                                onChanged: (String value) => _sourceListKey.currentState!.setState(() => _source = value),
                                 decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
                               ),
                             ),
                           ),
                           const SizedBox(height: 10),
                           Expanded(
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              itemCount: languageMap.length,
-                              itemBuilder: (BuildContext context, int index) => GestureDetector(
-                                onTap: () {
-                                  if (_from != languageMap.keys.elementAt(index)) {
-                                    _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(index));
-                                    _sourceEnglishKey.currentState!.setState(() => _isSourceEnglish = _from == "English (United States)");
-                                    if (_from == _to) {
-                                      int indx = 0;
-                                      while (indx == index) {
-                                        indx = Random().nextInt(languageMap.length);
+                            child: StatefulBuilder(
+                              key: _sourceListKey,
+                              builder: (BuildContext context, void Function(void Function()) _) {
+                                final List<String> keys = languageMap.keys.where((element) => element.startsWith(_source)).toList();
+                                return ListView.separated(
+                                  shrinkWrap: true,
+                                  itemCount: languageMap.length,
+                                  itemBuilder: (BuildContext context, int index) => GestureDetector(
+                                    onTap: () {
+                                      if (_from != keys.elementAt(index)) {
+                                        _fromKey.currentState!.setState(() => _from = keys.elementAt(index));
+                                        _sourceEnglishKey.currentState!.setState(() => _isSourceEnglish = _from == "English (United States)");
+                                        if (_from == _to) {
+                                          int indx = 0;
+                                          while (indx == index) {
+                                            indx = Random().nextInt(keys.length);
+                                          }
+                                          _toKey.currentState!.setState(() => _to = keys.elementAt(indx));
+                                        }
                                       }
-                                      _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(indx));
-                                    }
-                                  }
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  padding: _from == languageMap.keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
-                                  decoration: BoxDecoration(color: _from == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
-                                  child: Text(languageMap.keys.elementAt(index)),
-                                ),
-                              ),
-                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
+                                      Navigator.pop(context);
+                                    },
+                                    child: Container(
+                                      padding: _from == keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
+                                      decoration: BoxDecoration(color: _from == keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
+                                      child: Text(keys.elementAt(index)),
+                                    ),
+                                  ),
+                                  separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
+                                );
+                              },
                             ),
                           ),
                         ],
                       ),
                     ),
-                  );
+                  ).then((void value) => _source = "");
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -217,45 +227,52 @@ class _CreateState extends State<Create> {
                             child: Container(
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: orange)),
                               child: TextField(
-                                onChanged: (String value) {},
+                                onChanged: (String value) => _targetListKey.currentState!.setState(() => _target = value),
                                 decoration: const InputDecoration(contentPadding: EdgeInsets.all(8), border: InputBorder.none, hintText: "Type a langugage"),
                               ),
                             ),
                           ),
                           const SizedBox(height: 10),
                           Expanded(
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.zero,
-                              itemCount: languageMap.length,
-                              itemBuilder: (BuildContext context, int index) => GestureDetector(
-                                onTap: () {
-                                  if (_to != languageMap.keys.elementAt(index)) {
-                                    _toKey.currentState!.setState(() => _to = languageMap.keys.elementAt(index));
-                                    if (_to == _from) {
-                                      int indx = 0;
-                                      while (indx == index) {
-                                        indx = Random().nextInt(languageMap.length);
+                            child: StatefulBuilder(
+                              key: _targetListKey,
+                              builder: (BuildContext context, void Function(void Function()) _) {
+                                final List<String> keys = languageMap.keys.where((element) => element.startsWith(_target)).toList();
+                                return ListView.separated(
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  itemCount: keys.length,
+                                  itemBuilder: (BuildContext context, int index) => GestureDetector(
+                                    onTap: () {
+                                      if (_to != keys.elementAt(index)) {
+                                        _toKey.currentState!.setState(() => _to = keys.elementAt(index));
+                                        if (_to == _from) {
+                                          int indx = 0;
+                                          while (indx == index) {
+                                            indx = Random().nextInt(keys.length);
+                                          }
+                                          _fromKey.currentState!.setState(() => _from = keys.elementAt(indx));
+                                          _sourceEnglishKey.currentState!.setState(() => _isSourceEnglish = _from == "English (United States)");
+                                        }
+                                        _outputKey.currentState!.setState(() {});
                                       }
-                                      _fromKey.currentState!.setState(() => _from = languageMap.keys.elementAt(indx));
-                                      _sourceEnglishKey.currentState!.setState(() => _isSourceEnglish = _from == "English (United States)");
-                                    }
-                                  }
-                                  Navigator.pop(context);
-                                },
-                                child: Container(
-                                  padding: _to == languageMap.keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
-                                  decoration: BoxDecoration(color: _to == languageMap.keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
-                                  child: Text(languageMap.keys.elementAt(index)),
-                                ),
-                              ),
-                              separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
+                                      Navigator.pop(context);
+                                    },
+                                    child: Container(
+                                      padding: _to == keys.elementAt(index) ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(vertical: 8),
+                                      decoration: BoxDecoration(color: _to == keys.elementAt(index) ? orange.withOpacity(.6) : null, borderRadius: BorderRadius.circular(5)),
+                                      child: Text(keys.elementAt(index)),
+                                    ),
+                                  ),
+                                  separatorBuilder: (BuildContext context, int index) => AnimatedContainer(duration: 700.ms, width: MediaQuery.sizeOf(context).width, height: 2, color: orange, margin: const EdgeInsets.symmetric(vertical: 8)),
+                                );
+                              },
                             ),
                           ),
                         ],
                       ),
                     ),
-                  );
+                  ).then((value) => _target = "");
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -283,7 +300,7 @@ class _CreateState extends State<Create> {
                 children: <Widget>[
                   Container(
                     decoration: const BoxDecoration(shape: BoxShape.circle, color: orange),
-                    child: IconButton(padding: EdgeInsets.zero, onPressed: () => Navigator.pop(context), icon: const Icon(Bootstrap.chevron_bar_left, size: 20, color: white)),
+                    child: IconButton(padding: EdgeInsets.zero, onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Home())), icon: const Icon(Bootstrap.chevron_bar_left, size: 20, color: white)),
                   ),
                   const SizedBox(width: 10),
                   const Text("SPEAK", style: TextStyle(color: white, fontSize: 20, letterSpacing: 2)),
@@ -295,19 +312,24 @@ class _CreateState extends State<Create> {
                           onTap: _inputController.text.trim().isEmpty
                               ? null
                               : () async {
-                                  final Map<String, dynamic> data = translationsBox!.get("translations");
-                                  if (isToday(data.keys.first)) {
+                                  if (_output.isNotEmpty) {
+                                    final Map<dynamic, dynamic> data = translationsBox!.get("translations");
+                                    if (!isToday(data.keys.last)) {
+                                      data.addAll({DateTime.now().toString().split(" ")[0]: []});
+                                    }
                                     data.values.last.add(
                                       <String, dynamic>{
                                         "createdAt": DateTime.now(),
                                         "input": _inputController.text.trim(),
                                         "output": _output,
+                                        "inputLanguage": _from,
+                                        "outputLanguage": _to,
                                       },
                                     );
+                                    await translationsBox!.put("translations", data);
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Home()));
                                   }
-                                  await translationsBox!.put("translations", data);
-                                  // ignore: use_build_context_synchronously
-                                  Navigator.pop(context);
                                 },
                           child: AnimatedContainer(
                             duration: 500.ms,
@@ -318,7 +340,7 @@ class _CreateState extends State<Create> {
                               children: <Widget>[
                                 Icon(Bootstrap.save, size: 20, color: _inputController.text.trim().isEmpty ? white.withOpacity(.6) : white),
                                 const SizedBox(width: 5),
-                                Text("SAVE", style: TextStyle(color: white, fontSize: 18, letterSpacing: 1.5)),
+                                Text("SAVE", style: TextStyle(color: _inputController.text.trim().isEmpty ? white.withOpacity(.6) : white, fontSize: 18, letterSpacing: 1.5)),
                               ],
                             ),
                           ),
@@ -467,8 +489,8 @@ class _CreateState extends State<Create> {
                                     onPressed: _inputController.text.trim().isEmpty
                                         ? null
                                         : () async {
-                                            _flutterTts.setLanguage(languageMap[_to]!);
-                                            await _flutterTts.speak(_output);
+                                            flutterTts.setLanguage(languageMap[_to]!);
+                                            await flutterTts.speak(_output);
                                           },
                                     icon: const Icon(Bootstrap.soundwave, size: 20, color: white)),
                               );

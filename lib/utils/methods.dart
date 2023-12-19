@@ -6,14 +6,9 @@ import 'package:speak/utils/globals.dart';
 Future<bool> load() async {
   try {
     Hive.init((await getApplicationDocumentsDirectory()).path);
-    Hive.deleteBoxFromDisk("translations");
     translationsBox = await Hive.openBox("translations");
-    final Map<String, dynamic>? data = translationsBox!.get("translations");
-    if (data == null) {
-      translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{});
-    }
-    if (data!.isEmpty) {
-      translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
+    if (translationsBox!.get("translations") == null) {
+      await translationsBox!.put("translations", <String, List<Map<String, dynamic>>>{DateTime.now().toString().split(' ')[0]: <Map<String, dynamic>>[]});
     }
     return true;
   } catch (e) {
@@ -21,6 +16,6 @@ Future<bool> load() async {
   }
 }
 
-bool isToday(String date) => DateTime.now().toString().split(" ")[0].split("-") == date.split("-");
+bool isToday(String date) => DateTime.now().toString().split(" ")[0] == date;
 
 void showToast(String message) => Fluttertoast.showToast(msg: message, fontSize: 16, backgroundColor: orange.withOpacity(.6));
