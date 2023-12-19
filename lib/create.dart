@@ -279,9 +279,7 @@ class _CreateState extends State<Create> {
                   children: <Widget>[
                     StatefulBuilder(
                       key: _toKey,
-                      builder: (BuildContext context, void Function(void Function()) _) {
-                        return Text(_to.replaceFirst(" ", "\n"), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500), textAlign: TextAlign.center);
-                      },
+                      builder: (BuildContext context, void Function(void Function()) _) => Text(_to.replaceFirst(" ", "\n"), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
                     ),
                     const SizedBox(height: 5),
                     AnimatedContainer(duration: 500.ms, width: 60, height: 2, color: orange),
